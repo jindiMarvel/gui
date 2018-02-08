@@ -69,11 +69,26 @@
                 height: 30px;
                 font:normal normal normal 14px/30px 'Microsoft YaHei';
             }
-        div.margin{margin-left: 200px}
+            .blueButton2
+            {
+                position: absolute;
+                display: block;
+                width: 100px;
+                height: 40px;
+                background-color: #00b3ee;
+                color: #fff;
+                text-decoration: none;
+                text-align: center;
+                font:normal normal normal 16px/10px 'Microsoft YaHei';
+                cursor: pointer;
+                border-radius: 4px;
+                margin-left: 200px;
+            }
+        div.margin{margin-left: 10px}
         </style>
     
         <script type="text/javascript" src="../static/js/jquery-1.11.1.min.js"></script>
-       <script>
+        <script>
     $(document).ready(function()
     {
         $(".myFileUpload").change(function()
@@ -83,7 +98,7 @@
             $(".show").html(filename);
         });
     });
-</script> 
+        </script> 
 </head>
 <body>
     <div style="background:#FFF8DC;"> 
@@ -95,10 +110,7 @@
             <!--div class="margin" class="show"></div-->
         </div>
     <!--input class="btn12" type="file" name="img"-->  
-     <div class="margin"><button id="testButton" type="submit">上传</button></div>
-   
-    
-
+     <div class="margin"><button id="testButton" type="submit" class="blueButton2">上传</button></div>
     </form>
 
     <!--div class="face" width="540px" height="360px">
@@ -160,8 +172,9 @@
             }
 </script>
     
-
-    <iframe src="showimg.html" width="600px" height="400px" scrolling="yes" frameborder="no"></iframe>
+    <h2>   -</h2>
+    <h2>   -</h2>
+    <iframe src="showimg.html" width="600px" height="400px" margin-up='50px 'scrolling="yes" frameborder="no"></iframe>
     </div>
 </body>
 </html>
