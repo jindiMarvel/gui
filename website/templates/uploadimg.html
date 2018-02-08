@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>upload</title>
+    
+
+<style>
+#testButton { color:rgb(242, 242, 242);font-size:16px;padding-top:10px;padding-bottom:10px;padding-left:26px;padding-right:26px;box-shadow:rgb(145, 168, 227) 0px 5px 5px 0px;border-width:2px;border-color:rgb(145, 168, 227);border-style:solid;border-radius:0px;background-color:rgb(56, 143, 235);}#testButton:hover{color:#ffffff;background-color:#4876FF;border-color:#87CEFF;}
+    
+.btn12
+{
+	width:143px;
+	height:40px;
+	background:url("../static/images/bg12.jpg") no-repeat left top;
+	color:#FFF;
+}
+ </style>
+    
+    <style>
+            *
+            {
+                margin: 0;
+                padding: 0;
+            }
+            /*蓝色按钮,绝对定位*/
+            .blueButton
+            {
+                position: absolute;
+                display: block;
+                width: 100px;
+                height: 40px;
+                background-color: #00b3ee;
+                color: #fff;
+                text-decoration: none;
+                text-align: center;
+                font:normal normal normal 16px/40px 'Microsoft YaHei';
+                cursor: pointer;
+                border-radius: 4px;
+            }
+            .blueButton:hover
+            {
+                text-decoration: none;
+            }
+            /*自定义上传,位置大小都和a完全一样,而且完全透明*/
+            .myFileUpload
+            {
+                position: absolute;
+                display: block;
+                width: 100px;
+                height: 40px;
+                opacity: 0;
+            }
+            .myFileUpload::hover
+            {
+                position: absolute;
+                display: block;
+                width: 100px;
+                height: 40px;
+                opacity: 0;
+                color:#ffffff;background-color:#78c300;border-color:#c5e591;
+            }
+            /*显示上传文件夹名的Div*/
+            .show
+            {
+                position: absolute;
+                top:40px;
+                width: 100%;
+                height: 30px;
+                font:normal normal normal 14px/30px 'Microsoft YaHei';
+            }
+        div.margin{margin-left: 200px}
+        </style>
+    
+        <script type="text/javascript" src="../static/js/jquery-1.11.1.min.js"></script>
+       <script>
+    $(document).ready(function()
+    {
+        $(".myFileUpload").change(function()
+        {
+            var arrs=$(this).val().split('\\');
+            var filename=arrs[arrs.length-1];
+            $(".show").html(filename);
+        });
+    });
+</script> 
+</head>
+<body>
+    <div style="background:#FFF8DC;"> 
+    <form method="POST" enctype="multipart/form-data">
+        <div>
+    {% csrf_token %}    
+       <a href='javascript:void(0);' class="blueButton">选择文件</a>
+        <input type="file" class="myFileUpload" name="img"/> 
+            <!--div class="margin" class="show"></div-->
+        </div>
+    <!--input class="btn12" type="file" name="img"-->  
+     <div class="margin"><button id="testButton" type="submit">上传</button></div>
+   
+    
+
+    </form>
+
+    <!--div class="face" width="540px" height="360px">
+	<p><img  id='photo'style="img" class="normalFace" onerror="javascript:this.src='../static/images/1.jpg'"  height="100%" width="100%" src=""  onclick="fileSelect();"></p>
+	<form id="form_face" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+		<input type="file" name="img" id="fileToUpload" onchange="fileSelected();preImg(this.id,'photo');" style="display:none;">
+	</form>
+</div-->
+<script type="text/javascript">
+    function previewFile() {
+ var preview = document.getElementById('img');
+ var file  = document.querySelector('input[type=file]').files[0];
+ var reader = new FileReader();
+ reader.onloadend = function () {
+  preview.src = reader.result;
+ }
+ if (file) {
+  reader.readAsDataURL(file);
+ } else {
+  preview.src = "";
+ }
+}
+    
+    
+
+    
+    
+    
+    
+    
+    
+	function fileSelect() {
+	    document.getElementById("fileToUpload").click();
+	}
+
+	function fileSelected() {
+	  // 文件选择后触发次函数
+	  var form1 = window.document.getElementById("form_face");//获取form1对象
+	  form1.submit();
+
+	}
+
+	function getFileUrl(sourceId) {
+                var url;
+                if (navigator.userAgent.indexOf("MSIE")>=1) { // IE
+                    url = document.getElementById(sourceId).value;
+                } else if(navigator.userAgent.indexOf("Firefox")>0) { // Firefox
+                    url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+                } else if(navigator.userAgent.indexOf("Chrome")>0) { // Chrome
+                    url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+                }
+                return url;
+            }
+            function preImg(sourceId, targetId) {
+                var url = getFileUrl(sourceId);
+                var imgPre = document.getElementById(targetId);
+                imgPre.src = url;
+            }
+</script>
+    
+
+    <iframe src="showimg.html" width="600px" height="400px" scrolling="yes" frameborder="no"></iframe>
+    </div>
+</body>
+</html>

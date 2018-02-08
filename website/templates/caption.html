@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>caption</title>
+    <script type="text/javascript" src="../static/js/jquery-1.11.1.min.js"></script>
+<script ype="text/javascript">
+   function load(){
+    $.getJSON("../static/vis.json",function(data){
+    var str = data[0].caption
+       document.getElementById("caption").innerHTML=str;
+       });
+    }
+    var t1 = window.setInterval(load,1000);
+    var t2 = window.setInterval("load()",3000);
+</script>
+</head>
+<body>
+    <P style="font-size:25px" id="caption">Auris eget vestibulum augue. Integer sit amet tellus libero.Nam ac enim ut velit dictum congue. Integer vitae elit in risus laoreet porttitor non nec enim. Donec nec sapien odio. Nullam dictum, elit maximus vulputate venenatis, neque velit tincidunt mauris, ac facilisis ligula mi et neque. Vivamus ut felis sem. In eget diam lorem. Aliquam tincidunt. Aliquam venenatis  non orci egestas cursus. Phasellus venenatis blandit odio, in tincidunt ex trist.Integer sit amet tellus libero.Nam ac enim ut velit dictum congue. Integer vitae elit in risus laoreet porttitor non nec enim.
+    </P>
+</body>
+</html>
