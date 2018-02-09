@@ -11,7 +11,7 @@ def uploadImg(request):
         path = os.getcwd()
 
         path += '/media/upload'
-        print(path)
+        #print(path)
         try:
             if os.path.exists(path):
                 pass

@@ -1,39 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>caption</title>
-    <script type="text/javascript" src="../static/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript">
-   function load(){
-    $.getJSON("../static/vis.json",function(data){
-    var str = data[0].caption
-       document.getElementById("caption").innerHTML=str;
-       });
-    }
-    var t1 = window.setInterval(load,1000);
-    var t2 = window.setInterval("load()",3000);
-
-   
-</script>
 
 
-</head>
-<body>
-    <P style="font-size:25px" id="caption">Auris eget vestibulum augue. Integer sit amet tellus libero.Nam ac enim ut velit dictum congue. Integer vitae elit in risus laoreet porttitor non nec enim. Donec nec sapien odio. Nullam dictum, elit maximus vulputate venenatis, neque velit tincidunt mauris, ac facilisis ligula mi et neque. Vivamus ut felis sem. In eget diam lorem. Aliquam tincidunt. Aliquam venenatis  non orci egestas cursus. Phasellus venenatis blandit odio, in tincidunt ex trist.Integer sit amet tellus libero.Nam ac enim ut velit dictum congue. Integer vitae elit in risus laoreet porttitor non nec enim.
-    </P>
-
-    <br> 
-    <br> 
-
-    <p id="pTip">开始生成</p>  
-    <progress value="0" max="100" id="proDownFile" style="width: 400px"></progress>  
-    <input type="button" value="生成" onclick="Btn_Click(100);">
-    <br>  
-    
-    <br>  
-    
-
+    <pre name="code" class="html"><!DOCTYPE html>  
+    <html>  
+    <head>  
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <title> progress元素的使用</title>  
+        <style>  
+      
+        </style>  
+    </head>  
+      
+      
+    <p id="pTip">开始下载</p>  
+    <progress value="0" max="100" id="proDownFile" style="width: 500px"></progress>  
+    <input type="button" value="下载" onclick="Btn_Click(1000);">  
+      
+      
     <script type="text/javascript">  
       
         var intValue = 0;  
@@ -46,9 +28,9 @@
             objPro.value = intValue;  
             if (intValue >= objPro.max) {  
                 clearInterval(intTimer);  
-                objTip.innerHTML = "生成完成";  
+                objTip.innerHTML = "下载完成";  
             } else {  
-                objTip.innerHTML = "正在生成" + intValue + "%";  
+                objTip.innerHTML = "正在下载" + intValue + "%";  
             }  
         }  
         //设置时间  
@@ -117,7 +99,7 @@
                         alert("请设置1-100%之内的数")  
       
                     } else {  
-                        Btn_Click(100 - newTimer * 1);  
+                        Btn_Click(1000 - newTimer * 10);  
                     }  
                 }  
                 else{  
@@ -133,10 +115,19 @@
         function reset() {  
             intValue = 0;  
             var progress = document.getElementById('proDownFile');  
-            intTimer = setInterval(Interval_handler, 100);  
+            intTimer = setInterval(Interval_handler, 1000);  
         }  
       
     </script>  
-
-</body>
-</html>
+    <br>  
+    动态设置宽：<input type="" id="width" placeholder="number类型">  
+    <button onclick="setProgressWidth()">确定</button>  
+    <br>  
+    动态设置高：<input type="" id="height" placeholder="number类型">  
+    <button onclick="setProgressHeight()">确定</button>  
+    <br>  
+    设置加载速度:<input type="" id="speed" placeholder="number类型(1-100%)">  
+    <button onclick="setTimer()">确定</button>  
+      
+    </body>  
+    </html>  
